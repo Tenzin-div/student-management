@@ -22,8 +22,7 @@
 
 <div class="right">
 	<div class="right-layout">
-		<div class="row">
-					
+		<div class="row">	
 					<div class="col" style="background-color: #fbdc5d;">
 						<div class="colcontent">
 							<div class="colheading">
@@ -161,15 +160,10 @@
 								<a href="">View All</a>
 						</div>
 					</div>
-
 				</div>
 				<!-- end row -->
-
-				
 					<div class="data">
-
-						<div class="category_data">
-							
+						<div class="category_data">	
 							<div class="dash_teacher_content">
 								<table>
 								<thead style="background-color: #eaeaea;">
@@ -196,7 +190,7 @@
 								<tbody>
 									<?php include('layout/function.php'); fetch_teacher(); ?>
 								</tbody>
-							</table>
+								</table>
 							</div>
 						</div>
 						<div class="sub_category_data">

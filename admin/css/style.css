@@ -556,6 +556,7 @@ input[type=button]{
   .left{
   	padding-left: 10px;
   	width: 80px;
+  	transition: 1s;
   }
   .left ul li a span{
   	display: none;
