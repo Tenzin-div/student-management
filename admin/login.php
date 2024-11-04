@@ -47,6 +47,7 @@
 			if ($count==1) {
 		
 			 $_SESSION['user_pass']=$user_pass;
+			 $_SESSION['user_name']=$user_name;
 			 header("Location:index.php");
 			
 			}
