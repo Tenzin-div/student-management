@@ -217,7 +217,7 @@
 									</tr>
 								</thead>
 								<tbody>
-								  	<?php  fetch_students(); ?>
+								  	<?php fetch_students(); ?>
 
 								</tbody>
 							</table>

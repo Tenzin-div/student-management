@@ -69,20 +69,11 @@
 						<th>Sr No</th>
 						<th>Profile</th>
 						<th>Name</th>
-						<th>Roll No</th>
-						<th>Date Birth</th>
 						<th>Gender</th>
-						<th>Nation</th>
-						<th>Grade</th>
-						<th>Father Name</th>
 						<th>School Name</th>
 						<th>School Type</th>
 						<th>School Branch</th>
-						<th>Student ID</th>
-						<th>Admission Year </th>
-						<th>Student Status</th>
-						<th>Email</th>
-						<th>Green Book</th>
+						<th>Date</th>
 					</tr>
 				</thead>
 				<tbody>

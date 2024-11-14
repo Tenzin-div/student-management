@@ -10,7 +10,7 @@
 	<link rel="icon" type="imgage" href="../img/logo.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body style="background-image: url('../img/background.jpg');">
+<body style="background-image: url('../img/background.gif');">
 	<div class="login">
 		<div class="logincontent">
 			<div class="form_header">
@@ -39,7 +39,7 @@
 			$user_name=$_POST['user_name'];
 		
 			$user_pass=md5($_POST['user_pass']);
-			$get_user=$con->prepare("select * from user where user_name='$user_name' AND user_pass='$user_pass'");
+			$get_user=$con->prepare("select * from admin_user where user_name='$user_name' AND user_pass='$user_pass'");
 			$get_user->setFetchMode(PDO:: FETCH_ASSOC);
 			$get_user->execute();
 			$count=$get_user->rowCount();

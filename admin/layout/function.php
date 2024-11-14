@@ -141,6 +141,12 @@ function fetch_teacher(){
 	$school_name->execute();
 	$row_school_name=$school_name->fetch();
 
+	$branch_name_id=$row['school_branch'];
+	$branch_name=$con->prepare("select * from school_branch where branch_id='$branch_name_id'");
+	$branch_name->setFetchMode(PDO:: FETCH_ASSOC);
+	$branch_name->execute();
+	$row_branch_name=$branch_name->fetch();
+
 	$subject_id=$row['subject'];
 	$subject_name=$con->prepare("select * from subject where subject_id='$subject_id'");
 	$subject_name->setFetchMode(PDO:: FETCH_ASSOC);
@@ -152,6 +158,8 @@ function fetch_teacher(){
 	$type_name->setFetchMode(PDO:: FETCH_ASSOC);
 	$type_name->execute();
 	$row_type=$type_name->fetch();
+
+
 	
 		echo "<tr>
 				<td>".$i++."</td>
@@ -168,14 +176,14 @@ function fetch_teacher(){
 				<td>".$row_school_name['school_name']."</td>
 				<td>".$row_subject_name['subject']."</td>
 				<td>".$row_type['type_name']."</td>
-				<td>".$row['school_branch']."</td>
+				<td>".$row_branch_name['branch_name']."</td>
 				<td>".$row['id_number']."</td>
-				<td>".$row['admission_year']."</td>
+			
 				<td>".$row['status']."</td>
 				
 				<td>".$row['email']."</td>
 				<td>".$row['green_book']."</td>
-				<td>".$row['create_at']."</td>
+				<td>".date('M', strtotime($row['create_at'])).','. date('d', strtotime($row['create_at'])).','. date('Y', strtotime($row['create_at']))."</td>
 
 			</tr>";
 	
@@ -220,11 +228,23 @@ function fetch_teacher(){
 	$school_name->execute();
 	$row_school_name=$school_name->fetch();
 
+	$branch_name_id=$row['school_branch'];
+	$branch_name=$con->prepare("select * from school_branch where branch_id='$branch_name_id'");
+	$branch_name->setFetchMode(PDO:: FETCH_ASSOC);
+	$branch_name->execute();
+	$row_branch_name=$branch_name->fetch();
+
 	$type_id=$row['school_type'];
 	$type_name=$con->prepare("select * from school_type where type_id='$type_id'");
 	$type_name->setFetchMode(PDO:: FETCH_ASSOC);
 	$type_name->execute();
 	$row_type=$type_name->fetch();
+
+	$admission_id=$row['admission_year'];
+	$admission_name=$con->prepare("select * from admission_year where year_id='$admission_id'");
+	$admission_name->setFetchMode(PDO:: FETCH_ASSOC);
+	$admission_name->execute();
+	$row_admission=$admission_name->fetch();
 	
 		echo "<tr>
 				<td>".$i++."</td>
@@ -232,21 +252,10 @@ function fetch_teacher(){
 					<img src='../img/profile_img/".$row['student_profile']."'/>
 				</td>
 				<td>".$row['student_name']."</td>
-				<td>".$row['student_roll']."</td>
-				<td>".$row['birth']."</td>
 				<td>".$row_gender['gender']."</td>
-				<td>".$row_nation['nationality']."</td>
-				<td>".$row_grade['class']."</td>
-				<td>".$row['father_name']."</td>
 				<td>".$row_school_name['school_name']."</td>
 				<td>".$row_type['type_name']."</td>
-				<td>".$row['school_branch']."</td>
-				<td>".$row['id_number']."</td>
-				<td>".$row['admission_year']."</td>
-				<td>".$row['status']."</td>
-				
-				<td>".$row['email']."</td>
-				<td>".$row['green_book']."</td>
+				<td>".$row_branch_name['branch_name']."</td>
 				<td>".date('M', strtotime($row['create_at'])).','. date('d', strtotime($row['create_at'])).','. date('Y', strtotime($row['create_at']))."</td>
 
 			</tr>";
@@ -386,7 +395,7 @@ function fetch_school(){
 				<td>".$row['email']."</td>
 				<td>".$row['green_book']."</td>
 				<td><a href='index.php?view_individual_teacher=".$row['teacher_id']."'>Viw Teacher</a></td>
-				<td>".$row['create_at']."</td>
+				<td>".date('M', strtotime($row['create_at'])).','. date('d', strtotime($row['create_at'])).','. date('Y', strtotime($row['create_at']))."</td>
 			</tr>";
 	endwhile;
 }
@@ -447,22 +456,15 @@ function fetch_school_wise_students(){
 				<td>
 					<img src='../img/profile_img/".$row['student_profile']."'/>
 				</td>
-				<td>".$row['student_name']."</td>
-	
+				<td>".$row['student_name']."</td>	
 				<td>".$row_gender['gender']."</td>
-				<td>".$row_nation['nationality']."</td>
-			
-				
+				<td>".$row_nation['nationality']."</td>	
 				<td>".$row_school_name['school_name']."</td>
 				<td><a href='index.php?view_individual_student=".$row['student_id']."'>Viw Student</a></td>
 				<td>".$row['id_number']."</td>
 				<td>".$row['admission_year']."</td>
 				<td>".$row_status['status']."</td>
-				
-		
-				
-
-				<td>".$row['create_at']."</td>
+				<td>".date('M', strtotime($row['create_at'])).','. date('d', strtotime($row['create_at'])).','. date('Y', strtotime($row['create_at']))."</td>
 			</tr>";
 	endwhile;
 }
@@ -482,7 +484,6 @@ function fetch_individual_wise_students(){
 	$i=1;
 	while ($row=$fetch_students->fetch()) :
 	
-
 	$gender_id=$row['gender'];
 	$gender_name=$con->prepare("select * from gender where gender_id='$gender_id'");
 	$gender_name->setFetchMode(PDO:: FETCH_ASSOC);
